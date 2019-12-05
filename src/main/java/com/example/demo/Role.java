@@ -13,7 +13,7 @@ public class Role {
     @Column(unique=true)
     private String role;
 
-    @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Collection<User> users;
     public Role(){
 

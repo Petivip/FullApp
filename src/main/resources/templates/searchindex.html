@@ -38,7 +38,7 @@
         </ul>
     </div>
 </nav>
-<h1>Home page</h1>
+<h1>Search page</h1>
 
 <div class="container w-100" >
 
@@ -46,28 +46,27 @@
 
         <!-- Blog Entries Column -->
         <div class="col-md-8">
-            <h1 class="my-4 pt-5">Employee List</h1>
-            <div th:each="employee: ${employees}" class="card mb-4">
-                <div th:if="${employee.pic} != null">
-                    <img class="card-img-top" th:src="${employee.pic}" alt="Card image cap" >
-                </div>
-                <div class="card-body">
-                    First name :<span th:text="${employee.firstName}"></span><br/>
-                    Last name :<span th:text="${employee.lastName}"></span><br/>
-                    ID:<span th:text="${employee.id}"></span><br/>
-                    Department:<span th:text="${employee.department}"></span><br/>
+            <h1 class="my-4 pt-5">Department search result</h1>
+            <div th:each="department: ${departments}" class="card mb-4">
 
+                <div class="card-body">
+                    Department name :<span th:text="${department.name}"></span><br/>
+                    Adress :<span th:text="${department.address}"></span><br/>
+                    ID:<span th:text="${department.id}"></span><br/>
+                    <div th:each="employee: ${department.employees}" >
+                    Employess:<span th:text="${employee.firstName}"></span><br/>
+                    </div>
                 </div>
                 <dr/><dr/>
                 <div class="row">
                     <div class="col-md-4">
-                        <a style="margin: 50px" th:href="@{/update/{id}(id=${employee.id})}">Update</a>
+                        <a style="margin: 50px" class="btn btn-primary" th:href="@{/update/department/{id}(id=${department.id})}">Update</a>
                     </div>
                     <div class="col-md-4">
-                        <a style="margin: 50px" th:href="@{/detail/{id}(id=${employee.id})}">Detail</a>
+                        <a style="margin: 50px" class="btn btn-info" th:href="@{/detail/department/{id}(id=${department.id})}">Detail</a>
                     </div>
                     <div class="col-md-4">
-                        <a style="margin: 50px" th:href="@{/delete/{id}(id=${employee.id})}">Delete</a>
+                        <a style="margin: 50px" class="btn btn-danger" th:href="@{/delete/department/{id}(id=${department.id})}">Delete</a>
                     </div>
                 </div>
             </div>

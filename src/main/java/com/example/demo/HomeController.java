@@ -40,17 +40,17 @@ public class HomeController {
     }
 
     @PostMapping("/register")
-    public String processRegistrationPage(@Valid
-                                          @ModelAttribute("user") User user, BindingResult result,
-                                          Model model) {
+    public String processRegistrationPage(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
+        model.addAttribute("users",userRepository.findAll());
         model.addAttribute("user", user);
         if (result.hasErrors()) {
             return "registration";
         } else {
-            userService.saveUser(user);
+
+           userService.saveUser(user);
             model.addAttribute("message", "User Account Created");
         }
-        return "index";
+        return "indexUser";
     }
 
 
@@ -106,8 +106,6 @@ public class HomeController {
             e.printStackTrace();
             return "redirect:/addemployee";
         }
-
-
         return "redirect:/";
     }
 
@@ -145,7 +143,31 @@ public class HomeController {
 
     @PostMapping("/searchlist")
     public String SearchPage(Model model, @RequestParam("search") String search) {
-        model.addAttribute("employees",employeeRepository.findByFirstNameContainingIgnoreCase(search));
+        model.addAttribute("departments",departmentRepository.findByNameContainingIgnoreCase(search));
         return "searchindex";
+    }
+
+    //Delete, Update and detail
+    @RequestMapping("/detail/department/{id}")
+    public String ViewDetailDep(@PathVariable("id") long id, Model model){
+        model.addAttribute("department",departmentRepository.findById(id).get());
+        return "detailsDepartment";
+    }
+    @RequestMapping("/update/department/{id}")
+    public String UpdateDep(@PathVariable("id") long id, Model model){
+        model.addAttribute("department",departmentRepository.findById(id).get());
+        model.addAttribute("employees", employeeRepository.findAll());
+        return "department";
+    }
+    @RequestMapping("/delete/department/{id}")
+    public String DeleteDep(@PathVariable("id") long id){
+        employeeRepository.deleteById(id);
+        return "redirect:/";
+    }
+
+    @RequestMapping("/delete/user/{id}")
+    public String Deleteuser(@PathVariable("id") long id){
+      userRepository.deleteById(id);
+        return "redirect:/";
     }
 }

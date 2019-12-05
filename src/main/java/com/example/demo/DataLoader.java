@@ -1,4 +1,4 @@
-/*package com.example.demo;
+package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -34,8 +34,12 @@ public class DataLoader implements CommandLineRunner {
                 true, "admin");
         user.setRoles(Arrays.asList(adminRole));
         userRepository.save(user);
+
+        user = new User("petivip@admin.com", "pass", "petivip", "petivip",
+                true, "petivip");
+        user.setRoles(Arrays.asList(adminRole));
+        userRepository.save(user);
     }
 
 }
 
- */

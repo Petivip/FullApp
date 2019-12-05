@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Index</title>
+    <title>User Index</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body style="background-color: #c1c9d6">
@@ -47,33 +47,26 @@
 
         <!-- Blog Entries Column -->
         <div class="col-md-8">
-            <h1 class="my-4 pt-5">Employee List</h1>
+            <h1 class="my-4 pt-5">User List</h1>
 
-            <div th:each="employee: ${employees}"  class="card" >
-                <div th:if="${employee.pic} != null">
-                    <img class="card-img-top" th:src="${employee.pic}" alt="Card image cap" >
-                </div>
+            <div th:each="employee: ${users}"  class="card" >
+
                 <div class="card-body">
                     First name :  <span th:text="${employee.firstName}"></span><br/>
                     Last name :  <span th:text="${employee.lastName}"></span><br/>
+                    Email :  <span th:text="${employee.lastName}"></span><br/>
                     ID:  <span th:text="${employee.id}"></span><br/>
-                   Department:  <span th:text="${employee.department.name}"></span><br/>
 
                 </div>
 
-                <div class="row">
-                    <div class="col-md-4">
-                        <a style="margin: 10px" class="btn btn-primary" th:href="@{/update/{id}(id=${employee.id})}">Update</a>
-                    </div>
-                    <div class="col-md-4">
-                        <a style="margin: 10px"  class="btn btn-info"th:href="@{/detail/{id}(id=${employee.id})}">Detail</a>
-                    </div>
-                    <div class="col-md-4">
-                        <a style="margin: 10px" class="btn btn-danger" th:href="@{/delete/{id}(id=${employee.id})}">Delete</a>
-                    </div>
+            <div class="row">
+
+                <div class="col-md-4">
+                    <a style="margin: 10px" class="btn btn-danger" th:href="@{/delete/user/{id}(id=${employee.id})}">Delete</a>
                 </div>
             </div>
             </div>
+        </div>
             <!-- Pagination -->
 
 

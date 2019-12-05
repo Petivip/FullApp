@@ -5,7 +5,7 @@
     <title>Registration form</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body>
+<body style="background-color: #c1c9d6">
 <div th:replace="index::navlink"></div>
 <h4 style="padding-top: 50px;padding-left: 200px">New User Registration</h4>
 <form autocomplete="off" action="#" th:action="@{/register}"  th:object="${user}" method="post" style="width: 600px;padding-left: 200px;padding-top: 50px">

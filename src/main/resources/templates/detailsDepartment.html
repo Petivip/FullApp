@@ -5,7 +5,7 @@
     <title>Index</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body style="background-color: #c1c9d6">
+<body>
 <nav  th:fragment="navlink" class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -33,50 +33,42 @@
                 <a class="nav-link " href="http://petrosmelake.ga/"  target="_blank"  tabindex="-1" >About me</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="#" tabindex="-1" >Contact</a>
+                <a class="nav-link " href="#contact" tabindex="-1" >Contact</a>
             </li>
         </ul>
     </div>
 </nav>
+<h1>Detail page</h1>
 
-
-
-<div class="container" >
+<div class="container w-100" >
 
     <div class="row">
 
         <!-- Blog Entries Column -->
         <div class="col-md-8">
-            <h1 class="my-4 pt-5">Employee List</h1>
+            <h1 class="my-4 pt-5">Department detail</h1>
 
-            <div th:each="employee: ${employees}"  class="card" >
-                <div th:if="${employee.pic} != null">
-                    <img class="card-img-top" th:src="${employee.pic}" alt="Card image cap" >
-                </div>
                 <div class="card-body">
-                    First name :  <span th:text="${employee.firstName}"></span><br/>
-                    Last name :  <span th:text="${employee.lastName}"></span><br/>
-                    ID:  <span th:text="${employee.id}"></span><br/>
-                   Department:  <span th:text="${employee.department.name}"></span><br/>
-
+                    Department name :<span th:text="${department.name}"></span><br/>
+                    Adress :<span th:text="${department.address}"></span><br/>
+                    ID:<span th:text="${department.id}"></span><br/>
+                    <div th:each="employee: ${department.employees}" >
+                        Employess:<span th:text="${employee.firstName}"></span><br/>
+                    </div>
                 </div>
-
+                <dr/><dr/>
                 <div class="row">
                     <div class="col-md-4">
-                        <a style="margin: 10px" class="btn btn-primary" th:href="@{/update/{id}(id=${employee.id})}">Update</a>
+                        <a style="margin: 50px" class="btn btn-danger"  th:href="@{/delete/department/{id}(id=${department.id})}">Delete</a>
                     </div>
-                    <div class="col-md-4">
-                        <a style="margin: 10px"  class="btn btn-info"th:href="@{/detail/{id}(id=${employee.id})}">Detail</a>
-                    </div>
-                    <div class="col-md-4">
-                        <a style="margin: 10px" class="btn btn-danger" th:href="@{/delete/{id}(id=${employee.id})}">Delete</a>
-                    </div>
-                </div>
+
             </div>
-            </div>
+
             <!-- Pagination -->
 
 
+
+        </div>
 
 
         <!-- Sidebar Widgets Column -->
@@ -142,7 +134,6 @@
 
     </div>
     <!-- /.row -->
-    <br/><br/>
     <div class="row" style="padding-left: 200px" >
         <ul class="pagination justify-content-center mb-1">
             <li class="page-item">
