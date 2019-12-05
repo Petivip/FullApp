@@ -33,12 +33,12 @@
                 <a class="nav-link " href="http://petrosmelake.ga/"  target="_blank"  tabindex="-1" >About me</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="#" tabindex="-1" >Contact</a>
+                <a class="nav-link " href="#contact" tabindex="-1" >Contact</a>
             </li>
         </ul>
     </div>
 </nav>
-<h1>Employee List</h1>
+<h1>Home page</h1>
 
 <div class="container w-100" >
 
@@ -54,11 +54,11 @@
                 <div class="card-body">
                     First name :<span th:text="${employee.firstName}"></span><br/>
                     Last name :<span th:text="${employee.lastName}"></span><br/>
-                   ID:<span th:text="${employee.id}"></span><br/>
-                   Department:<span th:text="${employee.department.name}"></span><br/>
+                    ID:<span th:text="${employee.id}"></span><br/>
+                    Department:<span th:text="${employee.department}"></span><br/>
 
                 </div>
-                <br/><br/>
+                <dr/><dr/>
                 <div class="row">
                     <div class="col-md-4">
                         <a style="margin: 50px" th:href="@{/update/{id}(id=${employee.id})}">Update</a>

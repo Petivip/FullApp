@@ -21,8 +21,8 @@ public class Employee {
     @Column(name = "last_name")
     private String lastName;
 
-
-    @ManyToOne(fetch = FetchType.EAGER)
+    private String pic;
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn(name="department_id")
     public Department department;
 
@@ -69,5 +69,13 @@ public class Employee {
 
     public void setDepartment(Department department) {
         this.department = department;
+    }
+
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
     }
 }
